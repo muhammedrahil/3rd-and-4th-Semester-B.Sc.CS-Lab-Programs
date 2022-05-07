@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <malloc.h>
+
+struct node
+{
+‎   int value;
+‎   struct node *next;
+};
+‎
+typedef struct node snode;
+snode *newnode, *ptr;
+snode *first = NULL, *last = NULL;
+
+snode* create_node(int);
+void insert_node(int);
+void display();
+‎
+int main()
+{
+‎   int ch=0,n;
+‎
+‎   while (ch!=3)
+‎   {   
+‎       printf("\n---Linked List Operations---");
+‎       printf("\n1.Create List \n2.Display List \n3.Exit\n");
+‎       printf("\nEnter your choice : ");
+‎       scanf("%d", &ch);
+‎       switch (ch)
+‎       {
+‎       case 1:
+‎           printf("\nEnter the number of elements : ");
+‎           scanf("%d",&n);
+‎           insert_node(n);
+‎           break;
+‎       case 2: 
+‎           printf("\nElements in the list are : ");
+‎           display();
+‎           break;
+‎       case 3:
+‎           printf("Exiting...");
+‎           break;
+‎       default: 
+‎           printf("\nInvalid Choice\n");
+‎           break;
+‎       }
+‎   }
+‎   return 0;
+}
+
+snode* create_node(int val)
+{
+‎   newnode = (snode *)malloc(sizeof(snode));
+‎       newnode->value = val;
+‎       newnode->next = NULL;
+‎       return newnode;
+}
+
+void insert_node(int n)
+{
+‎   first = NULL,last=NULL;
+‎   int val,i;
+‎   for(i=0;i<n;i++)
+‎   {
+‎       printf("\nEnter the value for the Node %d : ",i+1);
+‎       scanf("%d", &val);
+‎       newnode = create_node(val);
+‎       if (first == last && last == NULL)
+‎       {
+‎           first = last = newnode;
+‎           first->next = NULL;
+‎           last->next = NULL;
+‎       }
+‎       else
+‎       {
+‎           last->next = newnode;
+‎           last = newnode;
+‎           last->next = NULL;
+‎       }
+‎   }
+‎   printf("\nLinked list created\n");
+}    
+
+void display()
+{
+‎   if (first == NULL)
+‎   {
+‎       printf("\nNo nodes in the list to display\n");
+‎   }
+‎   else
+‎   {
+‎       for (ptr = first;ptr != NULL;ptr = ptr->next)
+‎       {    
+‎           printf("  %d  ", ptr->value);
+‎       }
+‎   }
+}

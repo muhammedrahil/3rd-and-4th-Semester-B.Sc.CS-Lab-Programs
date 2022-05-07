@@ -1,0 +1,138 @@
+#include <stdio.h>
+#include <malloc.h>
+struct node
+{
+    int value;
+    struct node *next;
+};
+ 
+typedef struct node snode;
+snode *newnode, *ptr;
+snode *first = NULL, *last = NULL, *prev = NULL;
+
+snode* create_node(int);
+void insert_node(int);
+void display();
+void delete_node(int);
+ 
+int main()
+{
+    int ch=0,n,item;
+    while (ch!=4)
+    {   
+        printf("\n---Linked List Deletion---");
+        printf("\n1.Create List \n2.Display List \n3.Delete Node \n4.Exit\n");
+        printf("\nEnter your choice : ");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+        case 1:
+            printf("\nEnter the number of elements : ");
+            scanf("%d",&n);
+            insert_node(n);
+            break;
+        case 2: 
+            printf("\nElements in the list are : ");
+            display();
+            break;
+        case 3: 
+            printf("Enter the element to delete : ");
+            scanf("%d",&item);
+            delete_node(item);
+            break;
+        case 4:
+            printf("Exiting...");
+            break;
+        default: 
+            printf("\nInvalid Choice\n");
+            break;
+        }
+    }
+    return 0;
+}
+
+snode* create_node(int val)
+{
+    newnode = (snode *)malloc(sizeof(snode));
+        newnode->value = val;
+        newnode->next = NULL;
+        return newnode;
+}
+
+void insert_node(int n)
+{
+    first = NULL,last=NULL;
+    int val,i;
+    for(i=0;i<n;i++)
+    {
+        printf("\nEnter the value for the Node %d : ",i+1);
+        scanf("%d", &val);
+        newnode = create_node(val);
+        if (first == last && last == NULL)
+        {
+            first = last = newnode;
+            first->next = NULL;
+            last->next = NULL;
+        }
+        else
+        {
+            last->next = newnode;
+            last = newnode;
+            last->next = NULL;
+        }
+    }
+    printf("\nLinked list created\n");
+}    
+
+void display()
+{
+    if (first == NULL)
+    {
+        printf("\nNo nodes in the list to display\n");
+    }
+    else
+    {
+        for (ptr = first;ptr != NULL;ptr = ptr->next)
+        {    
+            printf("  %d  ", ptr->value);
+        }
+    }
+}
+
+void delete_node(int item)
+{ 
+    int i,pos=0;
+    struct node *temp,*ptr=first;
+    if(first==NULL)
+    {
+        printf("nThe List is Empty:n");
+    }
+    else
+    {
+       while(ptr != NULL)
+        {   
+            if(ptr->value == item)
+                break;
+            pos++;
+            ptr = ptr->next;
+        }
+        if(pos==0)
+        {
+            ptr=first;
+            first=first->next ;
+            printf("The deleted element is:%d",ptr->value);
+            free(ptr);
+        }
+        else
+        {
+            ptr=first;
+            for(i=0;i<pos;i++){
+                 temp=ptr;
+                 ptr=ptr->next ;
+            }
+        temp->next =ptr->next ;
+        printf("The deleted element is:%d",ptr->value);
+        free(ptr);
+        }
+    }
+}

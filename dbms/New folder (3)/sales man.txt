@@ -1,0 +1,39 @@
+create table sales_man(salesman_no int,s_name varchar(20) not null,place varchar(20),phone varchar(10),
+constraint prim1 primary key (salesman_no),constraint unq unique(phone));
+
+create table sales_order(
+order_no int,
+order_date varchar(10) not null,
+salesman_no int,
+del_type varchar(10),
+order_status varchar(10),
+ constraint ch2 check(order_status in ('Fullfilled','Cancelled','Inprocess','Backorder')),
+constraint prim primary key(order_no),
+constraint forgn foreign key sales_order(salesman_no) references sales_man(salesman_no),
+constraint ch1 check (del_type in('P','F'))); 
+
+
+
+insert into sales_man values(1,"adi","a","1001");
+insert into sales_man values(2,"bdi","b","1002");
+insert into sales_man values(3,"cdi","c","1003");
+insert into sales_man values(4,"ddi","d","1004");
+insert into sales_man values(5,"edi","e","1005");
+
+
+insert into sales_order values (1,"10-2-10",1,"P",'Fullfilled');
+insert into sales_order values (2,"10-2-10",2,"F",'Cancelled');
+insert into sales_order values (3,"10-2-10",3,"P",'Inprocess');
+insert into sales_order values (4,"10-2-10",4,"F",'Backorder');
+insert into sales_order values (5,"10-2-10",5,"P",'Fullfilled');
+
+SELECT*FROM sales_order;
+
+alter table sales_order drop constraint forgn;
+alter table sales_man drop primary key;
+alter table sales_order drop constraint ch1;
+alter table sales_order drop constraint ch2;
+alter table sales_man add primary key(salesman_no);
+alter table sales_order add foreign key sales_order(salesman_no) references sales_man(salesman_no);
+alter table sales_order add check (del_type in('P','F'));
+alter table sales_order add check(order_status in ('Fullfilled','Cancelled','Inprocess','Backorder'));
