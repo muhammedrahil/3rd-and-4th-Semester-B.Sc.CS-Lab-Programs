@@ -1,0 +1,180 @@
+III & IV Semester DS & RDBMS 
+Program List for the Academic Year 2020-21
+
+Part A: 
+DATA STRUCTURES USING C
+
+1. Reverse a string using pointers.
+2. Implement Pattern matching algorithm. 
+3. Search an element in the 2-dimensional array 
+4. Append 2 arrays
+5. Search an element in the array using binary search. 
+6. Read a sparse matrix and display its triplet representation  
+   using array.
+7. Create a singly linked list of n nodes and display it.
+8. Delete a given node from a singly linked list.
+9. Create a doubly linked list of integers and display in 
+   forward and backward direction.
+10.Implement Stack using array
+11.Implement Stack using linked list
+12.Evaluation of postfix expression.
+13.Implement Queue using array.
+14.Implement Queue using linked list.
+15.Search an element in a binary search tree
+16.Implement exchange sort
+17.Implement selection sort. 
+18.Implement insertion sort. 
+19.Quick sort
+20.Linear search
+
+Part B: 
+RDBMS
+1.Create a table customer (cust_no varchar (5), cust_name 
+  varchar (15), age number,phone varchar (10))
+
+a) insert 5 records and display it
+b) add new field d_birth with date datatype
+c) create another table cust_phone with fields cust_name and phone from customer 
+table
+d) remove the field age
+e) change the size of the cust_name to 25
+f) delete all the records from the table
+g) rename the table cutomer to cust
+h) drop the table
+
+2. Create a table sale_man ( salesman_no primary key, s_name not  null, place, 
+phone unique)
+Create table sales_order (order_no primary key
+order_date not null
+salesman_no foreign key references salesman_no in sales_man
+del_type values should be either P or F (check constraints)
+order_status values should be 'Inprocess','Fullfilled','Backorder', 'Cancelled' (check 
+constraints))
+a) Insert few records in both tables
+b) Delete primary key from sales_man table
+c) Delete Foreign key and Check constraints from sales_order table 
+d) Add primary key in sales_man using ALTER TABLE
+e) Add foreign key and CHECK constraints in sales_order table using ALTER TABLE 
+3. Create a table Hospital with the fields 
+(doctorid,doctorname,department,qualification,experience).
+Write the queries to perform the following.
+a) Insert 5 records
+b) Display the details of Doctors
+c) Display the details of doctors who have the qualification `MD'
+d) Display all doctors who have more than 5 years experience but do not have the 
+qualification `MD' 
+e) Display the doctors in `Skin' department
+f) update the experience of doctor with doctored='D003' to 5
+g) Delete the doctor with DoctorID='D005'
+
+4. Create the following tables
+Bank_customer (accno primary key, cust_name, place)
+Deposit (accno foreign key, deposit_no, damount)
+Loan (accno foreign key loan_no, Lamount)
+Write the following queries
+a) Display the details of the customers
+b) Display the customers along with deposit amount who have only deposit with the 
+bank
+c) Display the customers along with loan amount who have only loan with the bank
+d) Display the customers they have both loan and deposit with the bank
+e) Display the customer who have neither a loan nor a deposit with the bank
+
+5. Create a table employee with fields (EmpID, EName, Salary, Department, and Age). 
+Insert some records. Write SQL queries using aggregate functions and group by clause 
+A. Display the total number of employees.
+B. Display the name and age of the oldest employee of each department.
+C. Display the average age of employees of each department
+D. Display departments and the average salaries
+E. Display the lowest salary in employee table
+F. Display the number of employees working in purchase department
+G. Display the highest salary in sales department;
+H. Display the difference between highest and lowest salary
+
+6. Create a table product with the fields (Product_code primary key, Product_Name, 
+Category, Quantity, Price). 
+Insert some records Write the queries to perform the following.
+a. Display the records in the descending order of Product_Name
+b. Display Product_Code, Product_Name with price between 20 and 50
+c. Display the details of products which belongs to the categories of `bath soap', 
+`paste', or `washing powder'
+d. Display the products whose Quantity less than 100 or greater than 500
+e. Display the products whose names starts with 's'
+f. Display the products which not belongs to the category 'paste'
+g. Display the products whose second letter is 'u' and belongs to the Category 
+'washing powder'
+
+7. Consider the employee database given below. Give an expression in SQL for each of 
+the following queries:
+EMPLOYEE (Employee-Name, City)
+WORKS (Employee-Name, Company-Name, Salary)
+COMPANY (Company-Name, City)
+MANAGES (Employee-Name, Manager-Name)
+A) Find the names of all employees who work in Infosys
+B) Find the names and cities of residence of all employees who works in Wipro
+C) Find the names, and cities of all employees who work in Infosys and earn more than 
+Rs. 10,000.
+D) Find the employees who live in the same cities as the companies for which they 
+work.
+E) Find all employees who do not work in Wipro Corporation.
+F) Find the company that has the most employees.
+
+8. Write a program code to calculate the area of a circle for a value of radius varying from 3 to 7. Store the radius and the corresponding value of calculated area in an empty table named areas with field's radius and area.
+
+9. Write a program block to calculate the electricity bill by accepting cust_no and units_consumed
+
+10.Create a procedure to print Fibonacci number up to a limit, limit is passed as an argument
+
+11.Create a function to check whether a given number is prime or not
+
+12.create a table emp_salary(empno,enamedept,salary)
+Write a function to return the average salary of a particular department by accepting departmentname as argument.
+
+13.Create table exam_result(rollno, avg_score, Grade) insert 10 records. Assign null values to the field grade. Write Program block to update the grade field by using the following condition.
+
+avg_score between 90 and 100 - A
+
+avg_score 75 -89 - B 
+
+avg_score 60- 74 - C
+
+avg_score 50 -59 - D
+
+avg_score below 50 - E
+
+
+14. create a table stud_mark(regno, sname ,avg_mark)
+
+a)Insert few records 
+
+b)Write a procedure to display number of students got Distinction, first-class,second class , third class or failed
+
+ (90-100 distinction, 75-89firstclass60-74 second class 50-59 Third class below 50 failed)
+
+15.Prepare a salary report of the employees showing the details such as:
+
+EmpNo, Name, Basic Pay, DA, Gross Salary, PF, Net Salary, Annual Salary and Tax
+
+For this purpose, create a table named SALARIES having the following structure.
+ 
+ 
+
+Enter the records of at least 10 employees. Use the following information for calculating the details for the report:
+
+DA is fixed as the 40% of the basic pay.
+
+PF is fixed as 10% of the basic pay.
+
+Gross Salary is (Basic Pay + DA).
+
+Net Salary is (Gross Salary - PF)
+
+Annual Salary is (12 * Net Salary)
+
+Tax is calculated using the following rules:
+If annual salary is less than 100000, No Tax
+
+If annual salary is greater than 100000 but less than or equal to 150000, then the tax is 10% of the excess over 100000.
+
+If annual salary is greater than 150000 but less than or equal to 250000, then the tax is 20% of the excess over 150000.
+
+If annual salary is greater than 250000, then the tax is 30% of the excess over 250000.

@@ -1,5 +1,3 @@
-create database ho;
-use ho;
 create table employee(employee_name varchar(20),city varchar(30));
 create table works(employee_name varchar(20),company_name varchar(20),salary int);
 create table company(company_name varchar(20),city varchar(30));
@@ -26,12 +24,33 @@ select * from company;
 select * from managers;
 
 select employee_name from works where company_name='Infosys';
-select * from employee where Employee_name in(select Employee_name from works where Company_name="Wipro");
 
-  select * from employee where Employee_name in(select Employee_name from works where Company_name="Infosys" and Salary>10000);  
-  select Employee_name from employee where City in(select City from company);
-    select * from works where company_name<>'Wipro';
-    
-create view Employee_count as select Company_name,COUNT(company_name) as count from works group by Company_name;
- 
-    select Company_name  from Employee_count where count in(select MAX(count) from Employee_count);
+select employee.employee_name,employee.city from employee,works 
+	where employee.employee_name=works.employee_name 
+	and works.company_name='Wipro';
+	
+select employee.employee_name,employee.city from employee,works
+	where employee.employee_name=works.employee_name 
+	and works.company_name='Infosys' and salary>10000;
+
+select employee.employee_name from employee,works,company 
+	where company.company_name=works.company_name 
+	and employee.employee_name=works.employee_name 
+	and company.city=employee.city; 
+
+select * from works where company_name<>'Wipro';
+
+select company_name from works group by company_name having count (distinct employee_name) 
+>= all (select count (distinct employee_name) from works group by company_name)
+	
+
+
+
+
+
+
+
+
+
+
+
